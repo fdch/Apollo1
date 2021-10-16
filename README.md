@@ -10,3 +10,10 @@ Have fun!
 
 fdch
 
+## Credits
+
+- [Camomile](https://github.com/pierreguillot/Camomile) by Pierre Guillot
+- [Pure Data](http://msp.ucsd.edu/software.html) by Miller Puckette
+- [Apollo1](https://www.gsmusic.com.ar/productos/apollo1-en.html) by Guildo Salaya
+
+
