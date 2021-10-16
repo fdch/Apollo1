@@ -1,0 +1,5 @@
+This is a copy of the Apollo 1 Analog Synthesizer by Guido Salaya (GS Music). 
+It is intended for educational purposes.
+
+Version: 0.1
+Author: ffddcchh

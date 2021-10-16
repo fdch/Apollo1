@@ -1,0 +1,161 @@
+#N canvas 523 50 548 427 12;
+#X obj 25 20 tgl 15 0 empty empty empty 17 7 0 10 #fcfcfc #000000 #000000
+0 1;
+#X obj 25 41 metro 200;
+#X obj 25 89 random 12;
+#X obj 25 113 + 60;
+#X obj 25 140 makenote 127 400;
+#X obj 25 289 env~;
+#X floatatom 25 313 5 0 0 0 - - -;
+#X obj 25 67 bng 15 100 100 0 empty empty empty 17 7 0 10 #fcfcfc #000000
+#000000;
+#X obj 25 171 pack f f 1;
+#X msg 25 197 midi_note \$3 \$1 \$2;
+#X floatatom 104 170 5 0 0 0 - - -;
+#X msg 276 163 open ../builds/macos/Apollo1;
+#X obj 25 263 vstplugin~ 0 1;
+#N canvas 653 189 627 553 parameter 0;
+#X obj 113 72 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X obj 19 18 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X msg 19 124 param_set \$1 \$2;
+#X obj 39 249 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X msg 50 357 param_count;
+#X msg 54 412 param_list;
+#X msg 30 190 param_get \$1;
+#X obj 30 166 nbx 5 14 -1e+37 1e+37 0 0 empty empty empty 0 -8 0 10
+#fcfcfc #000000 #000000 0 256;
+#X msg 56 464 param_dump;
+#X obj 19 518 s \$0-msg;
+#X text 170 75 index;
+#X text 124 123 set parameter;
+#X text 96 249 index;
+#X text 131 357 get number of parameters;
+#X symbolatom 27 40 10 0 0 0 - - -;
+#X text 82 16 float value (0.0 - 1.0);
+#X text 268 17 a VST parameter can take two forms:;
+#X text 95 37 string value (not supported by all plugins), f 26;
+#X text 269 79 2) a string representation which is mainly used for
+display \, but many plugins also allow you to set the parameter in
+this way. it corresponds to the symbol box in the generic editor.,
+f 47;
+#X text 268 37 1) a 'normalized' float value which is always in the
+range 0 to 1 and corresponds to the slider position in the generic
+editor., f 47;
+#X obj 19 98 list prepend 0;
+#X msg 39 269 param_info \$1;
+#X text 128 269 get parameter info;
+#X text 44 315 the label is the unit of measurement \, e.g. dB \, ms
+, f 50;
+#X text 44 332 in the future \, more info might be added;
+#X text 127 412 get all parameter info;
+#X text 131 464 get all parameter state;
+#X symbolatom 127 97 10 0 0 0 - - -;
+#X symbolatom 92 166 10 0 0 0 - - -;
+#X text 28 149 index;
+#X text 91 147 name;
+#X text 114 189 get parameter;
+#X text 210 96 name;
+#X text 271 132 Each parameter can be accessed by either its index
+or name (with whitespace replaced with underscores), f 46;
+#X obj 270 176 cnv 20 285 65 empty empty empty 20 12 0 14 #f8fc00 #404040
+0;
+#X text 278 184 NOTE: The [param_set( message is scheduled at the current
+logical time. This allows for *sample accurate* automation of VST3
+plugins - but the plugin has to actually support it!, f 44;
+#X text 33 209 responds with;
+#X text 45 292 responds with;
+#X text 53 381 responds with;
+#X text 59 433 responds with a series of;
+#X msg 219 432 param_info;
+#X text 292 433 messages;
+#X text 61 486 responds with a series of;
+#X text 295 485 messages;
+#X msg 221 485 param_state;
+#X text 333 400 is sent through the rightmost outlet.;
+#X msg 121 212 param_state <index> <value> >display>, f 20;
+#X msg 131 293 param_info <index> <name> <label> ...;
+#X msg 140 380 param_count <count>;
+#X text 333 348 When you edit parameters in the GUI or automate linked
+parameters \,, f 34;
+#X msg 336 379 param_automated <index> <value>;
+#X connect 0 0 20 1;
+#X connect 1 0 20 0;
+#X connect 2 0 9 0;
+#X connect 3 0 21 0;
+#X connect 4 0 9 0;
+#X connect 5 0 9 0;
+#X connect 6 0 9 0;
+#X connect 7 0 6 0;
+#X connect 8 0 9 0;
+#X connect 14 0 20 0;
+#X connect 20 0 2 0;
+#X connect 21 0 9 0;
+#X connect 27 0 20 1;
+#X connect 28 0 6 0;
+#X restore 166 29 pd parameter;
+#X obj 344 307 text define params;
+#X obj 120 288 route param_info;
+#X obj 268 328 print;
+#X obj 124 359 text set params;
+#X obj 120 312 t a b;
+#X msg 166 312 1e+15;
+#X msg 177 221 param_list;
+#X msg 320 266 clear;
+#X obj 309 220 bng 15 250 50 0 empty empty empty 17 7 0 10 #fcfcfc
+#000000 #000000;
+#X obj 308 241 t b b;
+#X msg 120 336 symbol \$2;
+#X floatatom 300 25 5 0 0 0 - - -;
+#X obj 301 50 t f f;
+#X obj 357 70 text get params;
+#X floatatom 301 74 5 0 0 0 - - -;
+#X msg 288 116 param_get \$1;
+#X symbolatom 357 95 20 0 0 0 - - -;
+#X floatatom 134 53 5 0 0 0 - - -;
+#X obj 134 76 / 100;
+#X floatatom 213 54 5 0 0 0 - - -;
+#X obj 213 77 / 100;
+#X msg 134 100 37 \$1;
+#X msg 195 132 param_set \$1 \$2;
+#X msg 213 101 45 \$1;
+#X connect 0 0 1 0;
+#X connect 1 0 7 0;
+#X connect 2 0 3 0;
+#X connect 3 0 4 0;
+#X connect 4 0 8 0;
+#X connect 4 1 8 1;
+#X connect 5 0 6 0;
+#X connect 7 0 2 0;
+#X connect 8 0 9 0;
+#X connect 9 0 12 0;
+#X connect 10 0 8 2;
+#X connect 11 0 12 0;
+#X connect 12 0 5 0;
+#X connect 12 1 15 0;
+#X connect 15 0 18 0;
+#X connect 15 1 16 0;
+#X connect 18 0 24 0;
+#X connect 18 1 19 0;
+#X connect 19 0 17 1;
+#X connect 20 0 12 0;
+#X connect 21 0 14 0;
+#X connect 22 0 23 0;
+#X connect 23 0 20 0;
+#X connect 23 1 21 0;
+#X connect 24 0 17 0;
+#X connect 25 0 26 0;
+#X connect 26 0 28 0;
+#X connect 26 1 27 0;
+#X connect 27 0 30 0;
+#X connect 28 0 29 0;
+#X connect 29 0 12 0;
+#X connect 31 0 32 0;
+#X connect 32 0 35 0;
+#X connect 33 0 34 0;
+#X connect 34 0 37 0;
+#X connect 35 0 36 0;
+#X connect 36 0 12 0;
+#X connect 37 0 36 0;

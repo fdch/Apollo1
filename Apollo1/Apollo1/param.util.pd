@@ -1,0 +1,13 @@
+#N canvas 0 10 350 494 12;
+#X obj 10 10 param.get 1 vst-osc1-shape;
+#X obj 10 32 param.get 2 vst-osc1-level;
+#X obj 10 54 param.get 3 vst-osc1-sub;
+#X obj 10 76 param.get 4 vst-osc2-shape;
+#X obj 10 98 param.get 5 vst-osc2-level;
+#X obj 10 120 param.get 6 vst-osc2-sub;
+#X obj 10 141 param.get 7 vst-vcf-cutoff;
+#X obj 10 162 param.get 8 vst-eg-attack;
+#X obj 10 184 param.get 9 vst-eg-decay;
+#X obj 10 206 param.get 10 vst-eg-sustain;
+#X obj 10 228 param.get 11 vst-eg-release;
+#X obj 10 250 param.get 12 vst-lfo1-rate;

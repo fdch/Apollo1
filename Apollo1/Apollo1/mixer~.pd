@@ -1,0 +1,12 @@
+#N canvas 0 22 450 300 12;
+#X obj 156 178 clip~ -1 1;
+#X obj 156 153 hip~ 4;
+#X obj 156 111 +~;
+#X obj 55 27 inlet~;
+#X obj 156 242 outlet~;
+#X obj 302 27 inlet~;
+#X connect 0 0 4 0;
+#X connect 1 0 0 0;
+#X connect 2 0 1 0;
+#X connect 3 0 2 0;
+#X connect 5 0 2 1;
