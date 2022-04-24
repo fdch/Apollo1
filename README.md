@@ -4,7 +4,7 @@ Apollo1 is an open source Pure Data patch that can run inside a DAW using the Ca
 
 ![Apollo1 Screenshot](Apollo1.png "Apollo1 Graphical Interface")
 
-Head to the Releases to get the plugin for your OS, or clone/download the source code to use it as a Pd patch.
+Head to the [Releases](https://github.com/fdch/Apollo1/releases) to get the plugin for your OS, or clone/download the source code to use it as a Pd patch.
 
 Have fun!
 
